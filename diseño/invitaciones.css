@@ -1,7 +1,7 @@
 /* =========================================
    GENERAL
 ========================================= */
- 
+
 * {
     margin: 0;
     padding: 0;
@@ -177,7 +177,7 @@ h1 span {
     border-left: 1px solid #b8a98a;
     border-right: 1px solid #b8a98a;
 
-    display: flex;
+    /*display: flex;*/
 
     flex-direction: column;
 
