@@ -107,6 +107,7 @@ margin: auto;
 width: 0;
 height: 0;
 
+border-top: 200px solid #446343;
 border-left: 300px solid transparent;
 border-right: 300px solid transparent;
 border-bottom: 190px solid #334b30;
@@ -119,27 +120,31 @@ z-index: 1;
 /* SOLAPA */
 
 .sobre-solapa {
-position: absolute;
+ position: absolute;
+    top: 0;
+    left: 0;
 
-top: 0;
-left: 0;
+    width: 100%;
+    height: 58%;
 
-width: 100%;
-height: 55%;
+    background: #496d47;
 
-background: #496746;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
 
-clip-path: polygon(
-    0 0,
-    100% 0,
-    50% 100%
-);
+    z-index: 4;
+
+    /* pequeña sombra para separarla */
+    filter: drop-shadow(0 3px 3px rgba(0,0,0,.12));
 
 transform-origin: top;
 
 transition: transform 1s ease;
 
-z-index: 5;
+z-index: 2;
 
 
 }
@@ -182,7 +187,7 @@ margin: 0 8px;
 position: absolute;
 
 left: 50%;
-bottom: 28%;
+bottom: 35%;
 
 transform: translateX(-50%);
 
@@ -368,6 +373,38 @@ color: #3f5b3b;
 margin-top: 40px;
 }
 
+.fotosIntro {
+display: flex;
+
+justify-content: center;
+
+gap: 35px;
+
+margin-top: 20px;
+
+
+}
+.foto-intro {
+width: 190px;
+height: 190px;
+padding: 7px;
+
+}
+
+.foto-intro img {
+width: 100%;
+height: 100%;
+
+
+object-fit: cover;
+
+border-radius: 50%;
+
+display: block;
+
+
+}
+
 /* =========================================================
 INVITACIÓN PRINCIPAL
 ========================================================= */
@@ -376,7 +413,6 @@ INVITACIÓN PRINCIPAL
 width: 100%;
 
 background: #f7f6f1;
-
 
 }
 
@@ -455,8 +491,9 @@ letter-spacing: 2px;
 
 margin-bottom: 30px;
 
-
 }
+
+
 
 /* NOMBRES */
 
@@ -568,6 +605,34 @@ line-height: 1.05;
 
 }
 
+.cuenta-atras {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.cuenta-atras div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 55px;
+}
+
+.cuenta-atras span {
+    font-size: 50px;
+    font-weight: normal;
+    line-height: 1;
+}
+
+.cuenta-atras small {
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    margin-top: 7px;
+}
+
 /* =========================================================
 LUGARES
 ========================================================= */
@@ -620,8 +685,6 @@ FOTOS
 display: flex;
 
 
-justify-content: center;
-
 gap: 35px;
 
 margin-top: 20px;
@@ -633,13 +696,6 @@ margin-top: 20px;
 width: 190px;
 height: 190px;
 
-border-radius: 50%;
-
-padding: 7px;
-
-border: 2px solid #b79b58;
-
-background: #f7f3e8;
 
 
 }
@@ -649,11 +705,6 @@ width: 100%;
 height: 100%;
 
 
-object-fit: cover;
-
-border-radius: 50%;
-
-display: block;
 
 
 }
