@@ -359,6 +359,8 @@ font-size: 28px;
 
 }
 
+
+
 .nos-casamos span {
 font-family: "Great Vibes", cursive;
 
@@ -706,7 +708,7 @@ height: 100%;
 }
 
 .fotoReal{
-    max-width: 650px;
+max-width: 650px;
 margin: 50px auto 0;
 
 display: flex;
@@ -725,8 +727,8 @@ text-align: center;
 }
 
 .fotoBonita{
-width: 250px;
-height: 250px;
+width: 200px;
+height: 200px;
 
 }
 
