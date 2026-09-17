@@ -993,6 +993,7 @@ MÓVIL
 @media (max-width: 600px) {
 
     .nombres .nombre {
+      font-family: "Great Vibes", cursive;
         font-size: 75px;
     }
 
