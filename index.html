@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
+
+
 <title>Víctor & Elisabet | Nuestra Boda</title>
 
 <!-- FUENTES -->
@@ -16,13 +17,13 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="diseño/invitaciones.css">
-```
+
 
 </head>
 
 <body>
 
-```
+
 <!-- =====================================================
      SOBRE DE INICIO
 ====================================================== -->
@@ -109,6 +110,20 @@
                 Ahora sí…<br>
                 <span>¡nos casamos!</span>
             </p>
+
+           <div class="fotosIntro">
+
+                <div class="foto-intro">
+                    <img src="imagenes/SagradaFamilia.png" alt="SagradaFamilia">
+                    <p>Sagrada Familia</p>
+                </div>
+
+                <div class="foto-intro">
+                    <img src="imagenes/CristoDelOtero.jpg" alt="Cristo">
+                    <p>Cristo del Otero</p>
+                </div>
+
+            </div>
 
         </div>
 
@@ -213,25 +228,32 @@
 
             <!-- FOTOS -->
 
-            <div class="fotos">
-
-                <div class="foto-circular">
-                    <img src="imagenes/iglesia.jpg" alt="Iglesia">
-                </div>
-
-                <div class="foto-circular">
-                    <img src="imagenes/hotel.jpg" alt="Hotel">
-                </div>
-
-            </div>
 
 
             <p class="juntos">
                 Juntos, siempre
             </p>
 
-            <div class="corazon pequeño">
-                ♥
+            <div class="cuenta-atras">
+                <div>
+                    <span id="dias">0</span>
+                    <small>DÍAS</small>
+                </div>
+
+                <div>
+                    <span id="horas">0</span>
+                    <small>HORAS</small>
+                </div>
+
+                <div>
+                    <span id="minutos">0</span>
+                    <small>MINUTOS</small>
+                </div>
+
+                <div>
+                    <span id="segundos">0</span>
+                    <small>SEGUNDOS</small>
+                </div>
             </div>
 
         </div>
@@ -270,6 +292,12 @@
                     San Miguel de Palencia
                 </p>
 
+                <div class="fotos">
+                    <div class="foto-circular">
+                        <img src="imagenes/iglesia.jpg" alt="Iglesia">
+                    </div>                
+                </div>
+                <br>
                 <a href="https://www.google.com/maps/place/Iglesia+de+San+Miguel/@42.007812,-4.5393069,17z/data=!3m1!4b1!4m6!3m5!1s0xd47b0388c06a633:0x873fcda30463aa09!8m2!3d42.0078081!4d-4.534436!16s%2Fg%2F1213v1qg?entry=ttu"
                    class="boton">
                     CÓMO LLEGAR
@@ -306,9 +334,14 @@
                     Para reservas, contactar
                     directamente con el hotel.
                 </p>
+                <div class="fotos">
+                    <div class="foto-circular">
+                        <img src="imagenes/hotel.jpg" alt="Hotel">
+                    </div>
+                </div>
 
-                <a href="https://www.google.es/maps/place/Hotel+Rey+Sancho/@42.0042295,-4.5353972,16z"
-                   class="boton">
+                <br>
+                <a href="https://www.google.es/maps/place/Hotel+Rey+Sancho/@42.0042295,-4.5353972,16z" class="boton">
                     CÓMO LLEGAR
                 </a>
 
@@ -459,7 +492,41 @@
     });
 
 </script>
-```
+<script>
+    const fechaBoda = new Date("July 17, 2027 12:30:00").getTime();
+
+    function actualizarCuentaAtras() {
+        const ahora = new Date().getTime();
+        const diferencia = fechaBoda - ahora;
+
+        if (diferencia <= 0) {
+            document.getElementById("dias").textContent = "0";
+            document.getElementById("horas").textContent = "0";
+            document.getElementById("minutos").textContent = "0";
+            document.getElementById("segundos").textContent = "0";
+            return;
+        }
+
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor(
+            (diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutos = Math.floor(
+            (diferencia % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const segundos = Math.floor(
+            (diferencia % (1000 * 60)) / 1000
+        );
+
+        document.getElementById("dias").textContent = dias;
+        document.getElementById("horas").textContent = horas;
+        document.getElementById("minutos").textContent = minutos;
+        document.getElementById("segundos").textContent = segundos;
+    }
+
+    actualizarCuentaAtras();
+    setInterval(actualizarCuentaAtras, 1000);
+</script>
 
 </body>
 </html>
