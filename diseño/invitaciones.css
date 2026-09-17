@@ -973,6 +973,8 @@ MÓVIL
 
 
 .sobre-frontal::after {
+    border-top-width: 29vw;
+
     border-left-width: 45vw;
 
     border-right-width: 45vw;
