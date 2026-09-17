@@ -1,4 +1,5 @@
- /* =========================================================
+```css
+/* =========================================================
    GENERAL
 ========================================================= */
 
@@ -36,7 +37,11 @@ section {
     align-items: center;
 
     background:
-        radial-gradient(circle at center, #f6f1e6 0%, #e9dfcd 100%);
+        radial-gradient(
+            circle at center,
+            #f6f1e6 0%,
+            #e9dfcd 100%
+        );
 
     padding: 40px 20px;
 
@@ -49,10 +54,18 @@ section {
 
 .sobre-frase {
     color: #30462f;
+
     font-size: 25px;
+
     letter-spacing: 2px;
+
     margin-bottom: 35px;
 }
+
+
+/* =========================================================
+   SOBRE
+========================================================= */
 
 .sobre {
     width: min(600px, 85vw);
@@ -61,28 +74,46 @@ section {
     position: relative;
 
     cursor: pointer;
+
     perspective: 1000px;
 
-    filter: drop-shadow(0 25px 25px rgba(0, 0, 0, .15));
+    filter: drop-shadow(
+        0 25px 25px rgba(0, 0, 0, .15)
+    );
 
-    /* IMPORTANTE:
-       evita problemas de capas con la transformación */
+    /*
+       Creamos un contexto independiente para que
+       las capas del sobre no interfieran con otros
+       elementos de la página.
+    */
     isolation: isolate;
 }
 
 
 /* =========================================================
-   PARTE DELANTERA DEL SOBRE
+   PARTE FRONTAL DEL SOBRE
 ========================================================= */
 
 .sobre-frontal {
     position: absolute;
+
     inset: 0;
 
     background: #3f5b3b;
+
     border-radius: 5px;
 
-    z-index: 1;
+    /*
+       El frontal está por debajo de la solapa,
+       pero contiene el sello.
+    */
+    z-index: 2;
+
+    /*
+       Permitimos que el sello tenga una capa
+       superior dentro del frontal.
+    */
+    transform-style: flat;
 }
 
 
@@ -105,11 +136,20 @@ section {
     height: 0;
 
     border-top: 200px solid #446343;
+
     border-left: 300px solid transparent;
+
     border-right: 300px solid transparent;
+
     border-bottom: 190px solid #334b30;
 
+    /*
+       El triángulo está dentro del frontal,
+       por debajo del sello.
+    */
     z-index: 1;
+
+    pointer-events: none;
 }
 
 
@@ -134,19 +174,28 @@ section {
         50% 100%
     );
 
-    filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .12));
+    filter: drop-shadow(
+        0 3px 3px rgba(0, 0, 0, .12)
+    );
 
     transform-origin: top;
 
-    transition: transform 1s ease;
+    transition:
+        transform 1s ease;
 
-    /* La solapa está por encima del sobre */
+    /*
+       La solapa queda por encima del frontal,
+       pero por debajo del sello.
+    */
     z-index: 3;
 
-    /* Ayuda a que rotateX no genere comportamientos
-       extraños de renderizado */
+    /*
+       Importante para la animación 3D en móvil.
+    */
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+
+    transform-style: preserve-3d;
 }
 
 
@@ -189,11 +238,18 @@ section {
     position: absolute;
 
     left: 50%;
+
     bottom: 35%;
 
-    transform: translateX(-50%);
+    /*
+       El sello está dentro de .sobre-frontal.
+       Con este z-index queda por encima del
+       triángulo y visualmente por encima de la solapa.
+    */
+    z-index: 20;
 
     width: 90px;
+
     height: 90px;
 
     border-radius: 50%;
@@ -206,25 +262,29 @@ section {
         inset 0 0 0 3px #a98845,
         0 5px 12px rgba(0, 0, 0, .25);
 
-    /* EL SELLO SIEMPRE POR ENCIMA */
-    z-index: 10;
-
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     gap: 3px;
 
     color: #fff5dc;
 
-    font-family: "Cormorant Garamond", serif;
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
     font-size: 20px;
 
     font-weight: 700;
 
-    /* Evita problemas de perspectiva en móvil */
-    transform-style: flat;
+    /*
+       Solo usamos translateX para centrarlo.
+       No aplicamos transformaciones 3D al sello.
+    */
+    transform: translateX(-50%);
 }
 
 .sello span:nth-child(2) {
@@ -245,7 +305,8 @@ section {
 
     letter-spacing: 1px;
 
-    animation: pulsar 2s infinite;
+    animation:
+        pulsar 2s infinite;
 }
 
 @keyframes pulsar {
@@ -278,7 +339,9 @@ section {
     min-height: 100vh;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     background: #f4efe5;
@@ -292,6 +355,7 @@ section {
 
 .historia-contenido {
     width: 100%;
+
     max-width: 850px;
 }
 
@@ -316,11 +380,18 @@ section {
 }
 
 .historia h2 {
-    font-family: "Great Vibes", cursive;
+    font-family:
+        "Great Vibes",
+        cursive;
 
     color: #344b32;
 
-    font-size: clamp(60px, 8vw, 100px);
+    font-size:
+        clamp(
+            60px,
+            8vw,
+            100px
+        );
 
     line-height: .9;
 
@@ -352,7 +423,9 @@ section {
 }
 
 .nos-casamos span {
-    font-family: "Great Vibes", cursive;
+    font-family:
+        "Great Vibes",
+        cursive;
 
     font-size: 60px;
 
@@ -375,6 +448,7 @@ section {
 
 .foto-intro {
     width: 190px;
+
     height: 190px;
 
     padding: 7px;
@@ -382,6 +456,7 @@ section {
 
 .foto-intro img {
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -419,6 +494,7 @@ section {
     display: flex;
 
     justify-content: center;
+
     align-items: center;
 
     padding: 100px 20px;
@@ -465,7 +541,9 @@ section {
 
     align-items: center;
 
-    font-family: "Great Vibes", cursive !important;
+    font-family:
+        "Great Vibes",
+        cursive !important;
 
     font-weight: 400;
 
@@ -473,9 +551,16 @@ section {
 }
 
 .nombres .nombre {
-    font-family: "Great Vibes", cursive !important;
+    font-family:
+        "Great Vibes",
+        cursive !important;
 
-    font-size: clamp(80px, 10vw, 125px);
+    font-size:
+        clamp(
+            80px,
+            10vw,
+            125px
+        );
 
     font-weight: 400;
 
@@ -483,7 +568,9 @@ section {
 }
 
 .nombres .conector {
-    font-family: "Cormorant Garamond", serif !important;
+    font-family:
+        "Cormorant Garamond",
+        serif !important;
 
     font-size: 50px;
 
@@ -515,7 +602,10 @@ section {
 .fecha {
     display: grid;
 
-    grid-template-columns: 1fr 160px 1fr;
+    grid-template-columns:
+        1fr
+        160px
+        1fr;
 
     align-items: center;
 
@@ -525,9 +615,11 @@ section {
 }
 
 .fecha-bloque {
-    border-top: 1px solid #b8a98a;
+    border-top:
+        1px solid #b8a98a;
 
-    border-bottom: 1px solid #b8a98a;
+    border-bottom:
+        1px solid #b8a98a;
 
     padding: 15px 5px;
 
@@ -537,9 +629,11 @@ section {
 }
 
 .fecha-central {
-    border-left: 1px solid #b8a98a;
+    border-left:
+        1px solid #b8a98a;
 
-    border-right: 1px solid #b8a98a;
+    border-right:
+        1px solid #b8a98a;
 
     flex-direction: column;
 
@@ -657,11 +751,13 @@ section {
 
 .foto-circular {
     width: 190px;
+
     height: 190px;
 }
 
 .foto-circular img {
     width: 100%;
+
     height: 100%;
 }
 
@@ -681,9 +777,11 @@ section {
 
 .fotoBonita {
     width: 50%;
+
     height: 50%;
 
     border: 6px solid;
+
     border-color: #d8bc70;
 }
 
@@ -709,13 +807,20 @@ section {
 
     background: #e9dfcd;
 
-    padding: 110px max(25px, 8vw);
+    padding:
+        110px
+        max(25px, 8vw);
 }
 
 .informacion > h2 {
     text-align: center;
 
-    font-size: clamp(35px, 5vw, 55px);
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            55px
+        );
 
     line-height: 1;
 
@@ -748,6 +853,7 @@ section {
 
 .fotoIcono {
     width: 60px;
+
     height: 60px;
 }
 
@@ -843,7 +949,8 @@ footer {
 
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
     padding: 60px 50px;
 }
@@ -859,7 +966,9 @@ footer {
 }
 
 .footer-item + .footer-item {
-    border-left: 1px solid rgba(255, 255, 255, .3);
+    border-left:
+        1px solid
+        rgba(255, 255, 255, .3);
 }
 
 .footer-icon {
@@ -886,7 +995,10 @@ footer {
 @media (max-width: 900px) {
 
     .fecha {
-        grid-template-columns: 1fr 130px 1fr;
+        grid-template-columns:
+            1fr
+            130px
+            1fr;
     }
 
     footer {
@@ -902,7 +1014,9 @@ footer {
     .footer-item + .footer-item {
         border-left: none;
 
-        border-top: 1px solid rgba(255, 255, 255, .3);
+        border-top:
+            1px solid
+            rgba(255, 255, 255, .3);
     }
 }
 
@@ -913,6 +1027,7 @@ footer {
 
 @media (max-width: 600px) {
 
+
     /* =====================================================
        SOBRE
     ===================================================== */
@@ -922,12 +1037,20 @@ footer {
 
         height: 58vw;
 
-        /* Mantener las capas aisladas */
         isolation: isolate;
+
+        perspective: 1000px;
     }
 
     .sobre-frontal {
-        z-index: 1;
+        z-index: 2;
+
+        /*
+           Muy importante:
+           el frontal no crea un contexto 3D
+           que haga desaparecer el sello.
+        */
+        transform-style: flat;
     }
 
     .sobre-frontal::after {
@@ -938,16 +1061,28 @@ footer {
         border-right-width: 45vw;
 
         border-bottom-width: 29vw;
+
+        z-index: 1;
     }
 
     .sobre-solapa {
         z-index: 3;
 
-        /* Mantener la solapa detrás del sello */
+        height: 58%;
+
+        transform-origin: top;
+
         backface-visibility: hidden;
+
         -webkit-backface-visibility: hidden;
+
+        transform-style: preserve-3d;
     }
 
+    /*
+       El sello está dentro del frontal.
+       Lo hacemos claramente superior.
+    */
     .sello {
         width: 65px;
 
@@ -955,12 +1090,10 @@ footer {
 
         font-size: 15px;
 
-        /* MUY IMPORTANTE:
-           siempre por encima de la solapa */
-        z-index: 10;
+        z-index: 20;
 
-        /* Conservamos únicamente el centrado */
-        transform: translateX(-50%);
+        transform:
+            translateX(-50%);
     }
 
     .sello span:nth-child(2) {
@@ -982,21 +1115,30 @@ footer {
 
     .historia-contenido {
         width: 100%;
+
         max-width: 100%;
 
         overflow: visible;
     }
 
     .historia h2 {
-        font-family: "Great Vibes", cursive;
+        font-family:
+            "Great Vibes",
+            cursive;
 
-        font-size: clamp(44px, 14vw, 58px);
+        font-size:
+            clamp(
+                44px,
+                14vw,
+                58px
+            );
 
         line-height: 1.1;
 
         font-weight: 400;
 
-        margin: 0 auto 40px;
+        margin:
+            0 auto 40px;
 
         padding: 0;
 
@@ -1042,7 +1184,10 @@ footer {
     ===================================================== */
 
     .fecha {
-        grid-template-columns: 1fr 100px 1fr;
+        grid-template-columns:
+            1fr
+            100px
+            1fr;
     }
 
     .fecha-bloque {
@@ -1131,7 +1276,8 @@ footer {
     }
 
     .info-item {
-        grid-template-columns: 45px 1fr;
+        grid-template-columns:
+            45px 1fr;
 
         gap: 12px;
 
@@ -1186,11 +1332,15 @@ footer {
     ===================================================== */
 
     .nombres {
-        font-family: "Great Vibes", cursive !important;
+        font-family:
+            "Great Vibes",
+            cursive !important;
     }
 
     .nombres .nombre {
-        font-family: "Great Vibes", cursive !important;
+        font-family:
+            "Great Vibes",
+            cursive !important;
 
         font-size: 75px;
 
@@ -1198,7 +1348,9 @@ footer {
     }
 
     .nombres .conector {
-        font-family: "Cormorant Garamond", serif !important;
+        font-family:
+            "Cormorant Garamond",
+            serif !important;
 
         font-size: 35px;
 
@@ -1213,13 +1365,18 @@ footer {
 
 .nombres,
 .nombres .nombre {
-    font-family: "Great Vibes", cursive !important;
+    font-family:
+        "Great Vibes",
+        cursive !important;
 
     font-weight: 400;
 }
 
 .nombres .conector {
-    font-family: "Cormorant Garamond", serif !important;
+    font-family:
+        "Cormorant Garamond",
+        serif !important;
 
     font-weight: 400;
 }
+
