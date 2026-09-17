@@ -725,8 +725,8 @@ text-align: center;
 }
 
 .fotoBonita{
-width: 350px;
-height: 350px;
+width: 250px;
+height: 250px;
 
 }
 
@@ -1029,13 +1029,25 @@ MÓVIL
 
 
 .historia {
-    padding: 80px 25px;
-}
+        padding: 80px 20px;
+    }
 
+    .historia-contenido {
+        width: 100%;
+        max-width: 100%;
+    }
 
-.historia-texto {
-    font-size: 20px;
-}
+    .historia h2 {
+        font-size: 58px;
+        line-height: 1;
+        margin-bottom: 40px;
+        padding: 0;
+    }
+
+    .historia-texto {
+        font-size: 20px;
+    }
+
 
 
 .nos-casamos span {
