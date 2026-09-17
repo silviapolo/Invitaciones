@@ -1,4 +1,4 @@
-/* =========================================================
+ /* =========================================================
    GENERAL
 ========================================================= */
 
@@ -64,6 +64,10 @@ section {
     perspective: 1000px;
 
     filter: drop-shadow(0 25px 25px rgba(0, 0, 0, .15));
+
+    /* IMPORTANTE:
+       evita problemas de capas con la transformación */
+    isolation: isolate;
 }
 
 
@@ -78,7 +82,7 @@ section {
     background: #3f5b3b;
     border-radius: 5px;
 
-    z-index: 2;
+    z-index: 1;
 }
 
 
@@ -136,14 +140,21 @@ section {
 
     transition: transform 1s ease;
 
-    z-index: 4;
+    /* La solapa está por encima del sobre */
+    z-index: 3;
+
+    /* Ayuda a que rotateX no genere comportamientos
+       extraños de renderizado */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 
 /* =========================================================
    INICIALES
-========================================================= 
+========================================================= */
 
+/*
 .iniciales {
     position: absolute;
 
@@ -151,14 +162,15 @@ section {
     left: 0;
     right: 0;
 
-    z-index: 3;
+    z-index: 4;
 
     color: #f5ead1;
 
     font-family: "Great Vibes", cursive;
 
     font-size: 70px;
-}*/
+}
+*/
 
 .iniciales span {
     font-family: "Cormorant Garamond", serif;
@@ -194,7 +206,8 @@ section {
         inset 0 0 0 3px #a98845,
         0 5px 12px rgba(0, 0, 0, .25);
 
-    z-index: 100;
+    /* EL SELLO SIEMPRE POR ENCIMA */
+    z-index: 10;
 
     display: flex;
     justify-content: center;
@@ -209,7 +222,11 @@ section {
     font-size: 20px;
 
     font-weight: 700;
+
+    /* Evita problemas de perspectiva en móvil */
+    transform-style: flat;
 }
+
 .sello span:nth-child(2) {
     font-size: 14px;
 }
@@ -251,6 +268,7 @@ section {
 .sobre-abierto .sobre-solapa {
     transform: rotateX(180deg);
 }
+
 
 /* =========================================================
    HISTORIA
@@ -447,7 +465,7 @@ section {
 
     align-items: center;
 
-    font-family: "Great Vibes", cursive;
+    font-family: "Great Vibes", cursive !important;
 
     font-weight: 400;
 
@@ -455,7 +473,7 @@ section {
 }
 
 .nombres .nombre {
-    font-family: "Great Vibes", cursive;
+    font-family: "Great Vibes", cursive !important;
 
     font-size: clamp(80px, 10vw, 125px);
 
@@ -465,7 +483,7 @@ section {
 }
 
 .nombres .conector {
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", serif !important;
 
     font-size: 50px;
 
@@ -658,14 +676,13 @@ section {
 
     justify-content: center;
 
-
     text-align: center;
-
 }
 
 .fotoBonita {
     width: 50%;
     height: 50%;
+
     border: 6px solid;
     border-color: #d8bc70;
 }
@@ -896,12 +913,21 @@ footer {
 
 @media (max-width: 600px) {
 
-    /* SOBRE */
+    /* =====================================================
+       SOBRE
+    ===================================================== */
 
     .sobre {
         width: 90vw;
 
         height: 58vw;
+
+        /* Mantener las capas aisladas */
+        isolation: isolate;
+    }
+
+    .sobre-frontal {
+        z-index: 1;
     }
 
     .sobre-frontal::after {
@@ -914,10 +940,12 @@ footer {
         border-bottom-width: 29vw;
     }
 
-    .iniciales {
-        font-size: 50px;
+    .sobre-solapa {
+        z-index: 3;
 
-        top: 32%;
+        /* Mantener la solapa detrás del sello */
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
     }
 
     .sello {
@@ -926,6 +954,17 @@ footer {
         height: 65px;
 
         font-size: 15px;
+
+        /* MUY IMPORTANTE:
+           siempre por encima de la solapa */
+        z-index: 10;
+
+        /* Conservamos únicamente el centrado */
+        transform: translateX(-50%);
+    }
+
+    .sello span:nth-child(2) {
+        font-size: 11px;
     }
 
     .sobre-frase {
@@ -934,7 +973,7 @@ footer {
 
 
     /* =====================================================
-       HISTORIA - CORREGIDO PARA MÓVIL
+       HISTORIA
     ===================================================== */
 
     .historia {
