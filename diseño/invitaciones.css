@@ -1,594 +1,1090 @@
-/* =========================================
-   GENERAL
-========================================= */
+/* =========================================================
+GENERAL
+========================================================= */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+html {
+scroll-behavior: smooth;
 }
 
 body {
-    background: #e8e0d1;
-    color: #171714;
-    font-family: "Cormorant Garamond", serif;
+background: #f4efe5;
+color: #263526;
+font-family: "Cormorant Garamond", serif;
+}
+
+section {
+width: 100%;
+}
+
+/* =========================================================
+SOBRE INICIAL
+========================================================= */
+
+.sobre-seccion {
+min-height: 100vh;
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+background:
+    radial-gradient(circle at center, #f6f1e6 0%, #e9dfcd 100%);
+
+padding: 40px 20px;
+
+position: relative;
+
+}
+
+.sobre-contenido {
+text-align: center;
+}
+
+.sobre-frase {
+color: #30462f;
+
+font-size: 25px;
+
+letter-spacing: 2px;
+
+margin-bottom: 35px;
+
+
+}
+
+.sobre {
+width: min(600px, 85vw);
+height: min(390px, 55vw);
+
+position: relative;
+
+cursor: pointer;
+
+perspective: 1000px;
+
+filter: drop-shadow(0 25px 25px rgba(0,0,0,.15));
+
+
+}
+
+/* PARTE DELANTERA */
+
+.sobre-frontal {
+position: absolute;
+
+inset: 0;
+
+background: #3f5b3b;
+
+border-radius: 5px;
+
+overflow: hidden;
+
+z-index: 2;
+
+
+}
+
+/* TRIÁNGULO CENTRAL */
+
+.sobre-frontal::after {
+content: "";
+
+position: absolute;
+
+left: 0;
+right: 0;
+bottom: 0;
+
+margin: auto;
+
+width: 0;
+height: 0;
+
+border-left: 300px solid transparent;
+border-right: 300px solid transparent;
+border-bottom: 190px solid #334b30;
+
+z-index: 1;
+
+
+}
+
+/* SOLAPA */
+
+.sobre-solapa {
+position: absolute;
+
+top: 0;
+left: 0;
+
+width: 100%;
+height: 55%;
+
+background: #496746;
+
+clip-path: polygon(
+    0 0,
+    100% 0,
+    50% 100%
+);
+
+transform-origin: top;
+
+transition: transform 1s ease;
+
+z-index: 5;
+
+
+}
+
+/* INICIALES */
+
+.iniciales {
+position: absolute;
+
+
+top: 35%;
+
+left: 0;
+right: 0;
+
+z-index: 3;
+
+color: #f5ead1;
+
+font-family: "Great Vibes", cursive;
+
+font-size: 70px;
+
+
+}
+
+.iniciales span {
+font-family: "Cormorant Garamond", serif;
+
+font-size: 35px;
+
+margin: 0 8px;
+
+
+}
+
+/* SELLO */
+
+.sello {
+position: absolute;
+
+left: 50%;
+bottom: 28%;
+
+transform: translateX(-50%);
+
+width: 90px;
+height: 90px;
+
+border-radius: 50%;
+
+background: #c5a45d;
+
+border: 5px solid #dfc887;
+
+box-shadow:
+    inset 0 0 0 3px #a98845,
+    0 5px 12px rgba(0,0,0,.25);
+
+z-index: 10;
+
+display: flex;
+
+justify-content: center;
+align-items: center;
+
+gap: 3px;
+
+color: #fff5dc;
+
+font-family: "Cormorant Garamond", serif;
+
+font-size: 20px;
+
+font-weight: 700;
+
+}
+
+.sello span:nth-child(2) {
+font-size: 14px;
+}
+
+/* PISTA */
+
+.sobre-pista {
+margin-top: 30px;
+
+
+color: #30462f;
+
+font-size: 19px;
+
+letter-spacing: 1px;
+
+animation: pulsar 2s infinite;
+
+
+}
+
+@keyframes pulsar {
+
+
+0%, 100% {
+    opacity: .45;
+}
+
+50% {
+    opacity: 1;
 }
 
 
-/* =========================================
-   CONTENEDOR PRINCIPAL
-========================================= */
+}
+
+/* ANIMACIÓN SOBRE */
+
+.sobre-abierto .sobre-solapa {
+transform: rotateX(180deg);
+}
+
+/* =========================================================
+HISTORIA
+========================================================= */
+
+.historia {
+min-height: 100vh;
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+background: #f4efe5;
+
+padding: 100px 25px;
+
+text-align: center;
+
+position: relative;
+
+
+}
+
+.historia-contenido {
+max-width: 850px;
+}
+
+.historia-pequeno {
+color: #657557;
+
+font-size: 18px;
+
+letter-spacing: 4px;
+
+font-weight: 600;
+
+margin-bottom: 20px;
+
+
+}
+
+.ornamento {
+color: #b79b58;
+
+
+font-size: 22px;
+
+margin: 15px 0;
+
+
+}
+
+.historia h2 {
+font-family: "Great Vibes", cursive;
+
+color: #344b32;
+
+font-size: clamp(60px, 8vw, 100px);
+
+line-height: .9;
+
+font-weight: 400;
+
+margin-bottom: 45px;
+
+
+}
+
+.historia-texto {
+color: #40503c;
+
+
+font-size: 24px;
+
+line-height: 1.4;
+
+font-weight: 500;
+
+
+}
+
+.historia-texto p {
+margin-bottom: 25px;
+}
+
+.nos-casamos {
+margin-top: 45px;
+
+
+color: #31492f;
+
+font-size: 28px;
+
+
+}
+
+.nos-casamos span {
+font-family: "Great Vibes", cursive;
+
+font-size: 60px;
+
+color: #3f5b3b;
+
+
+}
+
+.inferior {
+margin-top: 40px;
+}
+
+/* =========================================================
+INVITACIÓN PRINCIPAL
+========================================================= */
 
 .invitacion {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
+width: 100%;
 
-    display: grid;
-    grid-template-columns: 60% 40%;
+background: #f7f6f1;
 
-    background: #f7f6f1;
+
+}
+
+/* =========================================================
+PORTADA
+========================================================= */
+
+.portada {
+min-height: 100vh;
+
+
+position: relative;
+
+background: #f8f8f4;
+
+overflow: hidden;
+
+display: flex;
+
+justify-content: center;
+align-items: center;
+
+padding: 100px 20px;
+
+
+}
+
+.contenido-portada {
+width: min(850px, 90%);
+
+text-align: center;
+
+position: relative;
+
+z-index: 2;
+
+
+}
+
+/* FLORES */
+
+.flores {
+position: absolute;
+
+opacity: .28;
+
+z-index: 1;
+
+
+}
+
+.flores img {
+max-width: 600px;
+}
+
+.flores-superior {
+top: -250px;
+left: -250px;
+}
+
+.flores-inferior {
+bottom: -250px;
+left: -250px;
+}
+
+/* TEXTO */
+
+.intro {
+font-size: 20px;
+
+font-weight: 600;
+
+line-height: 1.15;
+
+letter-spacing: 2px;
+
+margin-bottom: 30px;
+
+
+}
+
+/* NOMBRES */
+
+.portada h1 {
+font-family: "Great Vibes", cursive;
+
+font-size: clamp(80px, 10vw, 125px);
+
+font-weight: 400;
+
+line-height: .8;
+
+margin-bottom: 55px;
+
+color: #171714;
+
+
+}
+
+.portada h1 span {
+display: block;
+
+font-family: "Cormorant Garamond", serif;
+
+font-size: 50px;
+
+margin: 8px 0;
+
+
+}
+
+/* TITULO */
+
+.portada h2 {
+font-size: 27px;
+
+font-weight: 700;
+
+margin-bottom: 40px;
+
+
+}
+
+/* =========================================================
+FECHA
+========================================================= */
+
+.fecha {
+display: grid;
+
+grid-template-columns: 1fr 160px 1fr;
+
+align-items: center;
+
+width: min(750px, 95%);
+
+margin: 0 auto 35px;
+
+
+}
+
+.fecha-bloque {
+border-top: 1px solid #b8a98a;
+
+border-bottom: 1px solid #b8a98a;
+
+padding: 15px 5px;
+
+font-size: 21px;
+
+font-weight: 600;
+
+
+}
+
+.fecha-central {
+border-left: 1px solid #b8a98a;
+
+border-right: 1px solid #b8a98a;
+
+display: flex;
+
+flex-direction: column;
+
+align-items: center;
+
+
+}
+
+.fecha-central strong {
+font-size: 65px;
+
+
+line-height: .8;
+
+
+}
+
+.fecha-central span {
+font-size: 23px;
+
+
+font-weight: 700;
+
+line-height: 1.05;
+
+
+}
+
+/* =========================================================
+LUGARES
+========================================================= */
+
+.lugares {
+font-size: 25px;
+
+font-weight: 600;
+
+line-height: 1.25;
+
+margin-top: 30px;
+
+
+}
+
+.lugares p {
+margin-bottom: 20px;
+}
+
+.corazon {
+color: #b79b58;
+
+
+font-size: 25px;
+
+margin: 10px 0;
+
+
+}
+
+.mensaje {
+font-size: 24px;
+
+
+line-height: 1.2;
+
+font-weight: 500;
+
+margin: 20px 0 30px;
+
+
+}
+
+/* =========================================================
+FOTOS
+========================================================= */
+
+.fotos {
+display: flex;
+
+
+justify-content: center;
+
+gap: 35px;
+
+margin-top: 20px;
+
+
+}
+
+.foto-circular {
+width: 190px;
+height: 190px;
+
+border-radius: 50%;
+
+padding: 7px;
+
+border: 2px solid #b79b58;
+
+background: #f7f3e8;
+
+
+}
+
+.foto-circular img {
+width: 100%;
+height: 100%;
+
+
+object-fit: cover;
+
+border-radius: 50%;
+
+display: block;
+
+
+}
+
+.juntos {
+font-size: 28px;
+
+
+margin-top: 20px;
+
+font-weight: 600;
+
+
+}
+
+.pequeño {
+font-size: 18px;
+}
+
+/* =========================================================
+INFORMACIÓN
+========================================================= */
+
+.informacion {
+min-height: 100vh;
+
+
+background: #e9dfcd;
+
+padding: 110px max(25px, 8vw);
+
+}
+
+.informacion > h2 {
+text-align: center;
+
+
+font-size: clamp(35px, 5vw, 55px);
+
+line-height: 1;
+
+margin-bottom: 90px;
+
+font-weight: 700;
+
+
+}
+
+.info-item {
+max-width: 850px;
+
+margin: 0 auto 80px;
+
+display: grid;
+
+grid-template-columns: 70px 1fr;
+
+gap: 25px;
+
+
+}
+
+.icono {
+font-size: 45px;
+
+line-height: 1;
+
+text-align: center;
+
+color: #b79b58;
+
+}
+
+.info-item h3 {
+font-size: 30px;
+
+line-height: 1;
+
+margin-bottom: 18px;
+
+font-weight: 700;
+
+
+}
+
+.info-item p {
+font-size: 22px;
+
+
+line-height: 1.25;
+
+font-weight: 500;
+
+margin-bottom: 18px;
+
+
+}
+
+/* =========================================================
+BOTONES
+========================================================= */
+
+.boton {
+display: inline-block;
+
+
+background: #53694d;
+
+color: white;
+
+text-decoration: none;
+
+padding: 11px 20px;
+
+border-radius: 5px;
+
+font-size: 19px;
+
+transition: .25s;
+
+
+}
+
+.boton:hover {
+background: #3e5239;
+
+
+transform: translateY(-2px);
+
+
+}
+
+/* =========================================================
+AGRADECIMIENTO
+========================================================= */
+
+.agradecimiento {
+max-width: 650px;
+
+
+margin: 120px auto 0;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+gap: 20px;
+
+font-size: 24px;
+
+line-height: 1.2;
+
+text-align: center;
+
+
+}
+
+.agradecimiento span {
+color: #b79b58;
+
+
+font-size: 35px;
+
+
+}
+
+/* =========================================================
+FOOTER
+========================================================= */
+
+footer {
+background: #3f5b3b;
+
+color: #f5f0e5;
+
+display: grid;
+
+grid-template-columns: repeat(3, 1fr);
+
+padding: 60px 50px;
+
+
+}
+
+.footer-item {
+display: flex;
+
+
+align-items: flex-start;
+
+gap: 15px;
+
+padding: 0 30px;
+
+
+}
+
+.footer-item + .footer-item {
+border-left: 1px solid rgba(255,255,255,.3);
+}
+
+.footer-icon {
+font-size: 35px;
+}
+
+.footer-item h3 {
+font-size: 22px;
+
+
+margin-bottom: 8px;
+
+
+}
+
+.footer-item p {
+font-size: 18px;
+
+
+line-height: 1.15;
+
+
+}
+
+/* =========================================================
+TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+.fecha {
+    grid-template-columns: 1fr 130px 1fr;
+}
+
+footer {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+}
+
+.footer-item {
+    padding: 20px;
+}
+
+.footer-item + .footer-item {
+    border-left: none;
+
+    border-top: 1px solid rgba(255,255,255,.3);
 }
 
 
-/* =========================================
-   PORTADA IZQUIERDA
-========================================= */
+}
+
+/* =========================================================
+MÓVIL
+========================================================= */
+
+@media (max-width: 600px) {
+
+.sobre {
+    width: 90vw;
+
+    height: 58vw;
+}
+
+
+.sobre-frontal::after {
+    border-left-width: 45vw;
+
+    border-right-width: 45vw;
+
+    border-bottom-width: 29vw;
+}
+
+
+.iniciales {
+    font-size: 50px;
+
+    top: 32%;
+}
+
+
+.sello {
+    width: 65px;
+    height: 65px;
+
+    font-size: 15px;
+}
+
+
+.sobre-frase {
+    font-size: 20px;
+}
+
+
+.historia {
+    padding: 80px 25px;
+}
+
+
+.historia-texto {
+    font-size: 20px;
+}
+
+
+.nos-casamos span {
+    font-size: 48px;
+}
+
 
 .portada {
-    position: relative;
-    min-height: 950px;
-
-    background: #f8f8f4;
-
-    overflow: hidden;
-
-    border-right: 1px solid #ddd5c5;
+    padding: 80px 15px;
 }
 
 
 .contenido-portada {
-    width: 85%;
-    margin: auto;
-
-    text-align: center;
-
-    padding-top: 90px;
-
-    position: relative;
-    z-index: 2;
+    width: 95%;
 }
 
-
-/* =========================================
-   DECORACIÓN FLORAL
-========================================= */
-
-.flores {
-    position: absolute;
-
-    color: #b9ad8e;
-
-
-    opacity: .35;
-
-    z-index: 1;
-}
-
-.flores-superior {
-    size: 200px;
-}
-
-.flores-inferior {
-    bottom: 0px;
-    left: 0px;
-
-   /* transform: rotate(30deg);*/
-}
-
-
-/* =========================================
-   TEXTO SUPERIOR
-========================================= */
 
 .intro {
-    font-size: 20px;
-
-    font-weight: 600;
-
-    line-height: 1.15;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 25px;
+    font-size: 16px;
 }
 
 
-/* =========================================
-   NOMBRES
-========================================= */
-
-h1 {
-    font-family: "Great Vibes", cursive;
-
-    font-size: 105px;
-
-    font-weight: 400;
-
-    line-height: .85;
-
-    margin-bottom: 45px;
-}
-
-h1 span {
-    display: block;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 50px;
-
-    margin: 5px 0;
+.portada h1 {
+    font-size: 75px;
 }
 
 
-/* =========================================
-   TITULO
-========================================= */
-
-.portada h2 {
-    font-size: 25px;
-
-    font-weight: 700;
-
-    margin-bottom: 30px;
-}
-
-
-/* =========================================
-   FECHA
-========================================= */
-
-.fecha {
-    display: grid;
-
-    grid-template-columns: 1fr 150px 1fr;
-
-    align-items: center;
-
-    width: 90%;
-
-    margin: 0 auto 30px;
-}
-
-
-.fecha-bloque {
-    border-top: 1px solid #b8a98a;
-    border-bottom: 1px solid #b8a98a;
-
-    padding: 12px 5px;
-
-    font-size: 21px;
-
-    font-weight: 600;
-}
-
-
-.fecha-central {
-    border-left: 1px solid #b8a98a;
-    border-right: 1px solid #b8a98a;
-
-    /*display: flex;*/
-
-    flex-direction: column;
-
-    align-items: center;
-}
-
-
-.fecha-central strong {
-    font-size: 58px;
-
-    line-height: .8;
-}
-
-
-.fecha-central span {
-    font-size: 23px;
-
-    font-weight: 700;
-
-    line-height: 1.05;
-}
-
-
-/* =========================================
-   LUGARES
-========================================= */
-
-.lugares {
-    font-size: 25px;
-
-    font-weight: 600;
-
-    line-height: 1.25;
-
-    margin-top: 25px;
-}
-
-.lugares p {
-    margin-bottom: 20px;
-}
-
-
-/* =========================================
-   CORAZONES
-========================================= */
-
-.corazon {
-    color: #b79b58;
-
-    font-size: 25px;
-
-    margin: 5px 0;
-}
-
-
-/* =========================================
-   MENSAJE
-========================================= */
-
-.mensaje {
-    font-size: 24px;
-
-    line-height: 1.2;
-
-    font-weight: 500;
-
-    margin: 15px 0 25px;
-}
-
-
-/* =========================================
-   FOTOS CIRCULARES
-========================================= */
-
-.fotos {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 30px;
-
-    margin-top: 15px;
-}
-
-
-.foto-circular {
-    width: 190px;
-    height: 190px;
-
-    border-radius: 50%;
-
-    padding: 7px;
-
-    border: 2px solid #b79b58;
-
-    background: #f7f3e8;
-}
-
-
-.foto-circular img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    border-radius: 50%;
-
-    display: block;
-}
-
-
-/* =========================================
-   JUNTOS
-========================================= */
-
-.juntos {
-    font-size: 27px;
-
-    margin-top: 15px;
-
-    font-weight: 600;
-}
-
-.pequeño {
-    font-size: 18px;
-}
-
-
-/* =========================================
-   INFORMACIÓN DERECHA
-========================================= */
-
-.informacion {
-    background: #e9dfcd;
-
-    padding: 70px 55px;
-
-    min-height: 950px;
-}
-
-
-.informacion > h2 {
-    text-align: center;
-
-    font-size: 37px;
-
-    line-height: 1.05;
-
-    margin-bottom: 55px;
-
-    font-weight: 700;
-}
-
-
-/* =========================================
-   ELEMENTOS INFORMACIÓN
-========================================= */
-
-.info-item {
-    display: grid;
-
-    grid-template-columns: 55px 1fr;
-
-    gap: 15px;
-
-    margin-bottom: 40px;
-}
-
-
-.icono {
-    font-size: 40px;
-
-    line-height: 1;
-
-    text-align: center;
-}
-
-
-.info-item h3 {
-    font-size: 27px;
-
-    line-height: 1;
-
-    margin-bottom: 8px;
-
-    font-weight: 700;
-}
-
-
-.info-item p {
-    font-size: 22px;
-
-    line-height: 1.05;
-
-    font-weight: 500;
-
-    margin-bottom: 15px;
-}
-
-
-/* =========================================
-   BOTONES
-========================================= */
-
-.boton {
-    display: inline-block;
-
-    background: #60694c;
-
-    color: white;
-
-    text-decoration: none;
-
-    padding: 9px 16px;
-
-    border-radius: 7px;
-
-    font-size: 19px;
-
-    transition: .2s;
-}
-
-
-.boton:hover {
-    background: #4d563c;
-
-    transform: translateY(-2px);
-}
-
-
-/* =========================================
-   AGRADECIMIENTO
-========================================= */
-
-.agradecimiento {
-    display: flex;
-
-    align-items: center;
-
-    gap: 20px;
-
-    margin-top: 130px;
-
-    font-size: 22px;
-
-    line-height: 1.1;
-}
-
-
-.agradecimiento span {
-    color: #b79b58;
-
-    font-size: 30px;
-}
-
-
-/* =========================================
-   FOOTER
-========================================= */
-
-footer {
-    grid-column: 1 / -1;
-
-    background: #e4d7c0;
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    padding: 25px 50px;
-}
-
-
-.footer-item {
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 15px;
-
-    padding: 0 30px;
-}
-
-
-.footer-item + .footer-item {
-    border-left: 1px solid #bcae94;
-}
-
-
-.footer-icon {
+.portada h1 span {
     font-size: 35px;
 }
 
 
-.footer-item h3 {
-    font-size: 22px;
-
-    margin-bottom: 5px;
+.portada h2 {
+    font-size: 20px;
 }
 
 
-.footer-item p {
-    font-size: 18px;
-
-    line-height: 1.05;
+.fecha {
+    grid-template-columns: 1fr 100px 1fr;
 }
 
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+.fecha-bloque {
+    font-size: 15px;
+}
 
-@media (max-width: 900px) {
 
-    .invitacion {
-        grid-template-columns: 1fr;
-    }
+.fecha-central strong {
+    font-size: 45px;
+}
 
-    .portada {
-        min-height: auto;
-    }
 
-    .informacion {
-        min-height: auto;
-    }
+.fecha-central span {
+    font-size: 17px;
+}
+
+
+.lugares {
+    font-size: 20px;
+}
+
+
+.mensaje {
+    font-size: 20px;
+}
+
+
+.fotos {
+    gap: 15px;
+}
+
+
+.foto-circular {
+    width: 130px;
+    height: 130px;
+}
+
+
+.informacion {
+    padding: 80px 25px;
+}
+
+
+.informacion > h2 {
+    font-size: 30px;
+
+    margin-bottom: 60px;
+}
+
+
+.info-item {
+    grid-template-columns: 45px 1fr;
+
+    gap: 12px;
+
+    margin-bottom: 60px;
+}
+
+
+.icono {
+    font-size: 32px;
+}
+
+
+.info-item h3 {
+    font-size: 23px;
+}
+
+
+.info-item p {
+    font-size: 19px;
+}
+
+
+.boton {
+    font-size: 17px;
+}
+
+
+.agradecimiento {
+    font-size: 20px;
+
+    margin-top: 80px;
+}
+
 
     footer {
-        grid-template-columns: 1fr;
-        gap: 25px;
+        padding: 40px 20px;
     }
-
-    .footer-item {
-        padding: 15px;
-    }
-
-    .footer-item + .footer-item {
-        border-left: none;
-
-        border-top: 1px solid #bcae94;
-    }
-
 }
 
 
-@media (max-width: 600px) {
-
-    .contenido-portada {
-        width: 92%;
-
-        padding-top: 60px;
-    }
-
-    h1 {
-        font-size: 75px;
-    }
-
-    h1 span {
-        font-size: 35px;
-    }
-
-    .intro {
-        font-size: 16px;
-    }
-
-    .portada h2 {
-        font-size: 20px;
-    }
-
-    .fecha {
-        grid-template-columns: 1fr 100px 1fr;
-    }
-
-    .fecha-bloque {
-        font-size: 15px;
-    }
-
-    .fecha-central strong {
-        font-size: 45px;
-    }
-
-    .fecha-central span {
-        font-size: 17px;
-    }
-
-    .lugares {
-        font-size: 20px;
-    }
-
-    .mensaje {
-        font-size: 20px;
-    }
-
-    .foto-circular {
-        width: 130px;
-        height: 130px;
-    }
-
-    .informacion {
-        padding: 50px 25px;
-    }
-
-    .informacion > h2 {
-        font-size: 30px;
-    }
-
-    .info-item h3 {
-        font-size: 23px;
-    }
-
-    .info-item p {
-        font-size: 19px;
-    }
-
-}
