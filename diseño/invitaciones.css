@@ -1237,7 +1237,12 @@ footer {
     /* =====================================================
        PORTADA
     ===================================================== */
-
+    .flores-inferior {
+    width: 100px;
+    }
+    .flores-superior {
+    width: 100px;
+    }
     .portada {
         padding: 80px 15px;
     }
