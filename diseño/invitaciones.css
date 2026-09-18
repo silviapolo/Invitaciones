@@ -331,6 +331,10 @@ section {
        No aplicamos transformaciones 3D al sello.
     */
     transform: translateX(-50%);
+    touch-action: manipulation;
+}
+.sello span {
+    pointer-events: none;
 }
 
 .sello span:nth-child(2) {
