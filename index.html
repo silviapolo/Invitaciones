@@ -498,23 +498,47 @@
 
 <script>
 
-    const sobre = document.querySelector(".sobre");
+const sobre = document.querySelector(".sobre");
 
-    sobre.addEventListener("click", function () {
+sobre.addEventListener("click", function () {
 
-        document.querySelector(".sobre-seccion")
-            .classList.add("sobre-abierto");
+    // Abrir sobre
+    document.querySelector(".sobre-seccion")
+        .classList.add("sobre-abierto");
 
-        setTimeout(function () {
 
-            document.querySelector(".historia")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
+    // 🎵 REPRODUCIR MÚSICA AL PULSAR EL SOBRE
+    const reproductorMusica = document.getElementById("musica");
+    const botonMusica = document.getElementById("playPause");
 
-        }, 700);
+    reproductorMusica.volume = 0.7;
+
+    reproductorMusica.play().then(() => {
+
+        botonMusica.textContent = "❚❚";
+        botonMusica.setAttribute(
+            "aria-label",
+            "Pausar música"
+        );
+
+    }).catch((error) => {
+
+        console.log("No se pudo reproducir la música:", error);
 
     });
+
+
+    // Ir a nuestra historia
+    setTimeout(function () {
+
+        document.querySelector(".historia")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }, 700);
+
+});
 
 </script>
 <script>
@@ -554,26 +578,13 @@
 </script>
 
 <script>
-const musica = document.getElementById("musica");
-const playPause = document.getElementById("playPause");
-const progresoMusica = document.getElementById("progresoMusica");
-const tiempoMusica = document.getElementById("tiempoMusica");
-const barraMusica = document.querySelector(".barraMusica");
+    const musica = document.getElementById("musica");
+    const playPause = document.getElementById("playPause");
+    const progresoMusica = document.getElementById("progresoMusica");
+    const tiempoMusica = document.getElementById("tiempoMusica");
+    const barraMusica = document.querySelector(".barraMusica");
 
-// INTENTAR REPRODUCIR AUTOMÁTICAMENTE AL ABRIR
-window.addEventListener("load", () => {
 
-    musica.volume = 0.7;
-
-    musica.play().then(() => {
-        playPause.textContent = "❚❚";
-    }).catch(() => {
-        // El navegador ha bloqueado el autoplay.
-        // El usuario podrá iniciarla pulsando ▶.
-        playPause.textContent = "▶";
-    });
-
-});
 
 
 // PLAY / PAUSE
