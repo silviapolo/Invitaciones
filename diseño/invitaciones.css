@@ -2,6 +2,21 @@
 /* =========================================================
    GENERAL
 ========================================================= */
+@font-face {
+    font-family: "Tangerine";
+    src: url("../fuentes/tangerine/tangerine-regular.ttf")
+         format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Tangerine";
+    src: url("../fuentes/tangerine/tangerine-bold.ttf")
+         format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
 
 * {
     margin: 0;
@@ -416,21 +431,20 @@ section {
 
 .nos-casamos {
     margin-top: 45px;
-
     color: #31492f;
-
     font-size: 28px;
 }
 
 .nos-casamos span {
-    font-family:
-        "Great Vibes",
-        cursive;
-
-    font-size: 60px;
-
-    color: #3f5b3b;
+    font-family: great Vibes, cursive;
+    font-size: 150px;   
+    white-space: nowrap;
 }
+
+
+
+
+
 
 .inferior {
     margin-top: 40px;
@@ -451,7 +465,6 @@ section {
 
     height: 190px;
 
-    padding: 7px;
 }
 
 .foto-intro img {
@@ -459,9 +472,7 @@ section {
 
     height: 100%;
 
-    object-fit: cover;
-
-    border-radius: 50%;
+    object-fit: cover;  
 
     display: block;
 }
@@ -1379,4 +1390,3 @@ footer {
 
     font-weight: 400;
 }
-
