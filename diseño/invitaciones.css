@@ -809,7 +809,7 @@ section {
 
 .flores-superior {
     top: 0;
-    left: 3px;
+    left: 0px;
 
     width: 500px;
 }
@@ -819,7 +819,7 @@ section {
 
 .flores-inferior {
     bottom: 0;
-    left: 3px;
+    left: 0px;
 
     width: 500px;
 }
@@ -1397,10 +1397,10 @@ footer {
        PORTADA
     ===================================================== */
     .flores-superior {
-        width: 150px;
+        width: 140px;
     }
     .flores-inferior {
-        width: 150px;
+        width: 140px;
     }
     .portada {
         padding: 80px 15px;
