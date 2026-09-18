@@ -1260,7 +1260,7 @@ footer {
 
     .barraMusica::after {
         width: 10px;
-        height: 10px;
+        height: 8px;
     }
 
     #tiempoMusica {
