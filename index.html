@@ -260,6 +260,23 @@
                 </div>
             </div>
 
+            <div class="reproductor">
+                <button id="playPause" class="botonMusica" aria-label="Reproducir música">
+                    ▶
+                </button>
+
+                <div class="barraMusica">
+                    <div id="progresoMusica"></div>
+                </div>
+
+                <span id="tiempoMusica">0:00</span>
+            </div>
+
+            <audio id="musica" preload="auto">
+                <source src="musica/marry-you.mp3" type="audio/mpeg">
+            </audio>
+
+
         </div>
 
     </section>
@@ -534,6 +551,147 @@
 
     actualizarCuentaAtras();
     setInterval(actualizarCuentaAtras, 1000);
+</script>
+
+<script>
+const musica = document.getElementById("musica");
+const playPause = document.getElementById("playPause");
+const progresoMusica = document.getElementById("progresoMusica");
+const tiempoMusica = document.getElementById("tiempoMusica");
+const barraMusica = document.querySelector(".barraMusica");
+
+// INTENTAR REPRODUCIR AUTOMÁTICAMENTE AL ABRIR
+window.addEventListener("load", () => {
+
+    musica.volume = 0.7;
+
+    musica.play().then(() => {
+        playPause.textContent = "❚❚";
+    }).catch(() => {
+        // El navegador ha bloqueado el autoplay.
+        // El usuario podrá iniciarla pulsando ▶.
+        playPause.textContent = "▶";
+    });
+
+});
+
+
+// PLAY / PAUSE
+playPause.addEventListener("click", () => {
+
+    if (musica.paused) {
+        musica.play();
+        playPause.textContent = "❚❚";
+    } else {
+        musica.pause();
+        playPause.textContent = "▶";
+    }
+
+});
+
+
+// BARRA DE PROGRESO
+musica.addEventListener("timeupdate", () => {
+
+    if (!musica.duration) return;
+
+    const porcentaje =
+        (musica.currentTime / musica.duration) * 100;
+
+    progresoMusica.style.width = porcentaje + "%";
+
+    barraMusica.style.setProperty(
+        "--posicion",
+        porcentaje + "%"
+    );
+
+    const minutos = Math.floor(musica.currentTime / 60);
+
+    const segundos = Math.floor(musica.currentTime % 60)
+        .toString()
+        .padStart(2, "0");
+
+    tiempoMusica.textContent =
+        `${minutos}:${segundos}`;
+});
+
+
+// CUANDO TERMINA, VOLVER A EMPEZAR
+musica.addEventListener("ended", () => {
+
+    musica.currentTime = 0;
+    musica.play();
+
+});
+
+
+let arrastrando = false;
+
+
+// CALCULAR POSICIÓN DE LA CANCIÓN
+function cambiarPosicion(e) {
+
+    if (!musica.duration) return;
+
+    const rect = barraMusica.getBoundingClientRect();
+
+    let posicion = e.clientX - rect.left;
+
+    // Evitar salirnos de la barra
+    posicion = Math.max(0, Math.min(posicion, rect.width));
+
+    const porcentaje = posicion / rect.width;
+
+    musica.currentTime = porcentaje * musica.duration;
+
+    // Actualizar visualmente
+    progresoMusica.style.width = (porcentaje * 100) + "%";
+
+    barraMusica.style.setProperty(
+        "--posicion",
+        (porcentaje * 100) + "%"
+    );
+}
+
+
+// CLICK EN LA BARRA
+barraMusica.addEventListener("pointerdown", (e) => {
+
+    arrastrando = true;
+
+    barraMusica.setPointerCapture(e.pointerId);
+
+    cambiarPosicion(e);
+});
+
+
+// ARRASTRAR
+barraMusica.addEventListener("pointermove", (e) => {
+
+    if (!arrastrando) return;
+
+    cambiarPosicion(e);
+});
+
+
+// SOLTAR
+barraMusica.addEventListener("pointerup", () => {
+
+    arrastrando = false;
+
+});
+
+
+// =========================================================
+// SI SE CANCELA EL TOQUE
+// =========================================================
+
+barraMusica.addEventListener("pointercancel", () => {
+
+    arrastrando = false;
+
+});
+
 </script>
 
 </body>

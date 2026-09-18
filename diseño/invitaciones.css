@@ -1068,6 +1068,135 @@ footer {
 
 
 /* =========================================================
+   REPRODUCTOR MUSICAL
+========================================================= */
+
+.reproductor {
+    width: 90%;
+    max-width: 620px;
+    margin: 25px auto 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* BOTÓN PLAY / PAUSE */
+.botonMusica {
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid #d3ad45;
+    border-radius: 50%;
+
+    background: transparent;
+    color: #d3ad45;
+
+    font-size: 15px;
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.botonMusica:hover {
+    background: #d3ad45;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* =========================================================
+   BARRA MUSICAL ARRASTRABLE
+========================================================= */
+
+.barraMusica {
+    position: relative;
+
+    width: 180px;
+    height: 4px;
+
+    background: rgba(211, 173, 69, 0.25);
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    /* Importante para poder arrastrar con el dedo */
+    touch-action: none;
+}
+
+
+/* =========================================================
+   PARTE RECORRIDA
+========================================================= */
+
+#progresoMusica {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 0%;
+    height: 100%;
+
+    background: #d3ad45;
+
+    border-radius: 10px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CÍRCULO DE LA BARRA
+========================================================= */
+
+.barraMusica::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+
+    /* Esta variable será modificada por JavaScript */
+    left: var(--posicion, 0%);
+
+    width: 10px;
+    height: 10px;
+
+    background: #d3ad45;
+
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+
+    pointer-events: none;
+}
+
+
+
+/* TIEMPO */
+#tiempoMusica {
+    min-width: 32px;
+
+    color: #d3ad45;
+
+    font-size: 30px;
+
+    font-family: inherit;
+
+    text-align: left;
+}
+
+
+
+/* =========================================================
    TABLET
 ========================================================= */
 
@@ -1100,6 +1229,7 @@ footer {
 }
 
 
+
 /* =========================================================
    MÓVIL
 ========================================================= */
@@ -1107,6 +1237,31 @@ footer {
 @media (max-width: 600px) {
 
 
+    .reproductor {
+        width: 85%;
+        margin-top: 20px;
+        gap: 10px;
+    }
+
+    .botonMusica {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .barraMusica {
+        width: 140px;
+        height: 4px;
+    }
+
+    .barraMusica::after {
+        width: 10px;
+        height: 10px;
+    }
+
+    #tiempoMusica {
+        font-size: 11px;
+    }
     /* =====================================================
        SOBRE
     ===================================================== */
@@ -1237,11 +1392,11 @@ footer {
     /* =====================================================
        PORTADA
     ===================================================== */
-    .flores-inferior {
-    width: 100px;
-    }
     .flores-superior {
-    width: 100px;
+        width: 150px;
+    }
+    .flores-inferior {
+        width: 150px;
     }
     .portada {
         padding: 80px 15px;
