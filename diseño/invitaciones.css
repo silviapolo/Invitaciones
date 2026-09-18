@@ -1255,16 +1255,16 @@ footer {
 
     .barraMusica {
         width: 140px;
-        height: 4px;
+        height: 8px;
     }
 
     .barraMusica::after {
         width: 10px;
-        height: 10px;
+        height: 12px;
     }
 
     #tiempoMusica {
-        font-size: 11px;
+        font-size: 18px;
     }
     /* =====================================================
        SOBRE
