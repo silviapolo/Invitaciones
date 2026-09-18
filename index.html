@@ -500,36 +500,57 @@
 
 const sobre = document.querySelector(".sobre");
 
-sobre.addEventListener("click", function () {
+let sobreAbierto = false;
 
-    // Abrir sobre
+function abrirSobre(e) {
+
+    if (sobreAbierto) return;
+
+    sobreAbierto = true;
+
+    // Abrir el sobre
     document.querySelector(".sobre-seccion")
         .classList.add("sobre-abierto");
 
 
-    // 🎵 REPRODUCIR MÚSICA AL PULSAR EL SOBRE
-    const reproductorMusica = document.getElementById("musica");
-    const botonMusica = document.getElementById("playPause");
+    // =====================================================
+    // 🎵 REPRODUCIR MÚSICA INMEDIATAMENTE
+    // =====================================================
+
+    const reproductorMusica =
+        document.getElementById("musica");
+
+    const botonMusica =
+        document.getElementById("playPause");
 
     reproductorMusica.volume = 0.7;
 
-    reproductorMusica.play().then(() => {
+    reproductorMusica.play()
+        .then(() => {
 
-        botonMusica.textContent = "❚❚";
-        botonMusica.setAttribute(
-            "aria-label",
-            "Pausar música"
-        );
+            botonMusica.textContent = "❚❚";
 
-    }).catch((error) => {
+            botonMusica.setAttribute(
+                "aria-label",
+                "Pausar música"
+            );
 
-        console.log("No se pudo reproducir la música:", error);
+        })
+        .catch((error) => {
 
-    });
+            console.log(
+                "Autoplay bloqueado:",
+                error
+            );
+
+        });
 
 
-    // Ir a nuestra historia
-    setTimeout(function () {
+    // =====================================================
+    // BAJAR A NUESTRA HISTORIA
+    // =====================================================
+
+    setTimeout(() => {
 
         document.querySelector(".historia")
             .scrollIntoView({
@@ -538,7 +559,13 @@ sobre.addEventListener("click", function () {
 
     }, 700);
 
-});
+}
+
+
+// IMPORTANTE: pointerdown funciona tanto en PC
+// como en móvil y detecta el toque inmediatamente.
+
+sobre.addEventListener("pointerdown", abrirSobre);
 
 </script>
 <script>
