@@ -781,6 +781,44 @@ section {
 /* =========================================================
    FOTOS
 ========================================================= */
+/* =========================================================
+   FLORES DE LA PORTADA
+========================================================= */
+
+.flores {
+    position: absolute;
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+.flores img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+}
+
+
+/* FLORES ARRIBA IZQUIERDA */
+
+.flores-superior {
+    top: 0;
+    left: 3px;
+
+    width: 500px;
+}
+
+
+/* FLORES ABAJO IZQUIERDA */
+
+.flores-inferior {
+    bottom: 0;
+    left: 3px;
+
+    width: 500px;
+}
 
 .fotos {
     display: flex;
